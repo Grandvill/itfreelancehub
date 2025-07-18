@@ -25,6 +25,11 @@ class HomeController extends Controller
         return view('landing.booking', compact('services'));
     }
 
+    public function companyProfile()
+    {
+        return view('landing.companyProfile');
+    }
+
     public function storeBooking(Request $request)
     {
         $request->validate([
