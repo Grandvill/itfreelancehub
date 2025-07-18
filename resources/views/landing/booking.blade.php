@@ -261,7 +261,7 @@
                                 </div>
                                 <div class="flex items-center space-x-2">
                                     <i class="fas fa-phone"></i>
-                                    <span>+62 812 3456 7890</span>
+                                    <span>+62 123 456 7890</span>
                                 </div>
                             </div>
                         </div>
