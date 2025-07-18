@@ -9,10 +9,15 @@ use Illuminate\Http\Request;
 class BookingController extends Controller
 {
     public function create()
-    {
-        $services = Service::all(['id', 'title']);
-        return view('landing.booking', compact('services'));
-    }
+{
+    $services = Service::all(['id', 'title']);
+
+    // Tambahkan dua variabel berikut agar tidak undefined di Blade
+    $selectedService = null;
+    $selectedServiceData = null;
+
+    return view('landing.booking', compact('services', 'selectedService', 'selectedServiceData'));
+}
 
     public function index()
     {
