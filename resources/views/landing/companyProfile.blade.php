@@ -60,7 +60,7 @@
             </div>
 
             <div class="relative">
-                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
+                <img src="images/company.jpg"
                      alt="Our Team Working" class="rounded-2xl shadow-2xl w-full h-96 object-cover">
                 <div class="absolute -bottom-6 -left-6 bg-blue-600 text-white p-6 rounded-xl shadow-xl">
                     <div class="text-2xl font-bold">4+ Years</div>
