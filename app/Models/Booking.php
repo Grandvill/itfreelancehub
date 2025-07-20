@@ -9,18 +9,13 @@ class Booking extends Model
     protected $fillable = [
         'name',
         'email',
-        'service',
+        'service_id',
         'description',
         'status',
     ];
 
     public function service()
     {
-        return $this->belongsTo(Service::class);
-    }
-
-    public function bookings()
-    {
-        return $this->hasMany(Booking::class);
+        return $this->belongsTo(Service::class, 'service_id');
     }
 }
