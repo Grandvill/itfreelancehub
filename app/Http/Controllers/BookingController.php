@@ -27,18 +27,19 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'service' => 'required|string|max:255',
-            'description' => 'required|string',
+            'service_id' => 'required|string|max:255',
+            'message' => 'required|string',
         ]);
 
         Booking::create([
             'name' => $request->name,
             'email' => $request->email,
-            'service' => $request->service,
-            'description' => $request->description,
+            'service_id' => $request->service_id,
+            'description' => $request->message,
             'status' => 'pending',
         ]);
 
