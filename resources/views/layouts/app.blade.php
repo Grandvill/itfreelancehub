@@ -90,6 +90,10 @@
                             <i class="fas fa-calendar-alt"></i>
                             <span>Booking</span>
                         </a>
+                        <a href="{{ route('tracking') }}" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
+                            <i class="fas fa-search"></i>
+                            <span>Track Order</span>
+                        </a>
                         <a href="{{ route('login') }}" class="flex items-center space-x-2 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg">
                             <i class="fas fa-user"></i>
                             <span>Login</span>
@@ -139,9 +143,9 @@
                             <i class="fas fa-building"></i>
                             <span>Company Profile</span>
                         </a>
-                        <a href="{{ route('booking') }}" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-50">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Booking</span>
+                        <a href="{{ route('tracking') }}" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-50">
+                            <i class="fas fa-search"></i>
+                            <span>Track Order</span>
                         </a>
                         <a href="{{ route('login') }}" class="flex items-center space-x-3 bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-md mx-4">
                             <i class="fas fa-user"></i>
