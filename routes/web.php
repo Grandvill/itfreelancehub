@@ -11,6 +11,8 @@ Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/booking', [HomeController::class, 'booking'])->name('booking');
 Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
 Route::get('/company-profile', [HomeController::class, 'companyProfile'])->name('companyProfile');
+Route::get('/track-order', [TrackOrderController::class, 'index'])->name('track.order');
+Route::post('/track-order', [TrackOrderController::class, 'search'])->name('track.order.search');
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 
