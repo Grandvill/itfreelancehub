@@ -90,7 +90,7 @@
                             <i class="fas fa-calendar-alt"></i>
                             <span>Booking</span>
                         </a>
-                        <a href="{{ route('tracking') }}" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
+                        <a href="{{ route('track.order') }}" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
                             <i class="fas fa-search"></i>
                             <span>Track Order</span>
                         </a>
@@ -143,7 +143,7 @@
                             <i class="fas fa-building"></i>
                             <span>Company Profile</span>
                         </a>
-                        <a href="{{ route('tracking') }}" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-50">
+                        <a href="{{ route('track.order') }}" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-50">
                             <i class="fas fa-search"></i>
                             <span>Track Order</span>
                         </a>
