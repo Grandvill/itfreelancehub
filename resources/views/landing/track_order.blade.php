@@ -191,20 +191,21 @@
                                     @endif
                                 </div>
 
-                                <div class="bg-gray-50 p-4 rounded-lg">
-                                    <h4 class="font-semibold text-gray-700 mb-2">Detail Proyek</h4>
-                                    <p class="text-sm text-gray-600 mb-1">
-                                        <i class="fas fa-money-bill-wave mr-1"></i>
-                                        Harga: <span class="font-semibold text-green-600">
-                                            Rp {{ number_format($order->service_price ?? 0, 0, ',', '.') }}
-                                        </span>
-                                    </p>
-                                    @if($order->timeline)
+                               <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-gray-700 mb-2">Detail Proyek</h4>
+                                <p class="text-sm text-gray-600 mb-1">
+                                    <i class="fas fa-money-bill-wave mr-1"></i>
+                                    Harga: <span class="font-semibold text-green-600">
+                                        Rp {{ number_format($order->service->price ?? 0, 0, ',', '.') }}
+                                    </span>
+                                </p>
+                                @if($order->timeline)
                                     <p class="text-sm text-gray-600">
                                         <i class="fas fa-calendar-alt mr-1"></i> Timeline: {{ $order->timeline }}
                                     </p>
-                                    @endif
-                                </div>
+                                @endif
+                            </div>
+
                             </div>
 
                             <!-- Project Description -->
