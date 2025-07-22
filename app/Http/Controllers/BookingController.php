@@ -19,11 +19,46 @@ class BookingController extends Controller
     return view('landing.booking', compact('services', 'selectedService', 'selectedServiceData'));
 }
 
-    public function index()
+    public function index(Request $request)
     {
-        $bookings = Booking::all();
+        $query = Booking::query()->with('service');
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%")
+                ->orWhereHas('service', fn($q) => $q->where('title', 'like', "%{$search}%"));
+            });
+        }
+
+        $bookings = $query->orderBy('created_at', 'desc')->paginate(10);
+
         return view('admin.bookings.index', compact('bookings'));
     }
+
+    public function show(Booking $booking)
+    {
+        $booking->load('service');
+        return view('admin.bookings.show', compact('booking'));
+    }
+
+    public function updateStatus(Request $request, Booking $booking)
+    {
+        $request->validate([
+            'status' => 'required|in:pending,accepted,rejected',
+        ]);
+
+        $booking->status = $request->status;
+        $booking->save();
+
+        return redirect()->back()->with('success', 'Status updated successfully.');
+    }
+
 
     public function store(Request $request)
     {

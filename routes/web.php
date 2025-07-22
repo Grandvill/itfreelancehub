@@ -21,5 +21,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
     Route::resource('/services', ServiceController::class)->names('admin.services');
     Route::resource('/bookings', BookingController::class)->names('admin.bookings');
+    Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('admin.bookings.show');
+    Route::post('/bookings/{booking}/status', [BookingController::class, 'updateStatus'])->name('admin.bookings.updateStatus');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
