@@ -2,13 +2,12 @@
 @section('title', 'Manage Bookings')
 
 @section('content')
-<div class="space-y-6">
-    <div class="flex justify-between items-center">
-        <h2 class="text-2xl font-bold text-gray-800">Order Management</h2>
-    </div>
 
-    <!-- Filter & Search -->
-    <form method="GET" class="flex flex-col md:flex-row md:items-center md:space-x-4 space-y-3 md:space-y-0">
+  <!-- Filter & Search (aligned to the right) -->
+<div class="flex justify-between items-center space-y-6 mb-6">
+    <h2 class="text-2xl font-bold text-gray-800">Order Management</h2>
+
+    <form method="GET" class="flex flex-wrap items-center space-x-3 ml-auto">
         <select name="status" onchange="this.form.submit()"
             class="border rounded-md px-3 py-2 text-sm">
             <option value="">All Statuses</option>
@@ -20,11 +19,14 @@
         </select>
 
         <input type="text" name="search" value="{{ request('search') }}" placeholder="Search..."
-            class="border rounded-md px-3 py-2 text-sm w-full md:w-1/3">
+            class="border rounded-md px-3 py-2 text-sm">
 
         <button type="submit"
             class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Search</button>
     </form>
+</div>
+
+
 
     <!-- Booking Table -->
     <div class="overflow-x-auto bg-white rounded-xl shadow">
