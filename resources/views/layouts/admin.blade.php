@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" x-data="{ sidebarOpen: false }" class="h-full">
+<html lang="id" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,117 +7,194 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Alpine.js -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sidebar: '#1f2937',
+                    }
+                }
+            }
+        }
+    </script>
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .sidebar-active {
+            @apply bg-blue-600 text-white;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="flex h-screen bg-gray-100 text-gray-900 overflow-hidden">
 
-    <!-- Sidebar for desktop -->
-    <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 bg-gradient-to-b from-blue-600 to-blue-800 text-white">
-        <div class="p-6 text-xl font-bold flex items-center space-x-2">
-            <i class="fas fa-tachometer-alt"></i>
-            <a href="{{ route('admin.dashboard') }}">Admin Panel</a>
+    <!-- Desktop Sidebar -->
+    <aside class="bg-sidebar text-white w-64 flex-shrink-0 hidden lg:block">
+        <div class="flex items-center justify-center h-16 border-b border-gray-700">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-code text-2xl text-blue-400"></i>
+                <span class="text-xl font-bold">ITFreelanceHub</span>
+            </div>
         </div>
-
-        <nav class="flex-1">
-            <ul class="space-y-1 mt-6">
+        <nav class="mt-5">
+            <ul class="space-y-2 px-2">
                 <li>
                     <a href="{{ route('admin.dashboard') }}"
-                        class="flex items-center px-6 py-3 hover:bg-blue-700 {{ request()->routeIs('admin.dashboard') ? 'bg-blue-900' : '' }}">
-                        <i class="fas fa-home mr-2"></i> Dashboard
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('admin.dashboard') ? 'sidebar-active' : '' }}">
+                        <i class="fas fa-tachometer-alt w-6 mr-3"></i>
+                        <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.services.index') }}"
-                        class="flex items-center px-6 py-3 hover:bg-blue-700 {{ request()->routeIs('admin.services.*') ? 'bg-blue-900' : '' }}">
-                        <i class="fas fa-briefcase mr-2"></i> Manajemen Katalog
+                     <a href="{{ route('admin.services.index') }}"
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('admin.services.index') ? 'sidebar-active' : '' }}">
+                        <i class="fas fa-briefcase w-6 mr-3"></i>
+                        <span>Manajemen Katalog</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.bookings.index') }}"
-                        class="flex items-center px-6 py-3 hover:bg-blue-700 {{ request()->routeIs('admin.bookings.*') ? 'bg-blue-900' : '' }}">
-                        <i class="fas fa-shopping-cart mr-2"></i> Manajemen Pesanan
+                     <a href="{{ route('admin.bookings.index') }}"
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('admin.bookings.index') ? 'sidebar-active' : '' }}">
+                        <i class="fas fa-shopping-cart w-6 mr-3"></i>
+                        <span>Manajemen Pesanan</span>
+                    </a>
+                </li>
+                {{-- <li>
+                    <a href="{{ route('admin.reports.sales') }}"
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('admin.reports.sales') ? 'sidebar-active' : '' }}">
+                        <i class="fas fa-chart-bar w-6 mr-3"></i>
+                        <span>Laporan Penjualan</span>
+                    </a>
+                </li> --}}
+                <li class="border-t border-gray-700 pt-2 mt-2">
+                    <a href="../index.php" target="_blank"
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-external-link-alt w-6 mr-3"></i>
+                        <span>View Website</span>
                     </a>
                 </li>
             </ul>
         </nav>
-    </div>
+    </aside>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden lg:hidden"></div>
 
     <!-- Mobile Sidebar -->
-    <div x-show="sidebarOpen" class="fixed inset-0 z-40 flex md:hidden" role="dialog" aria-modal="true">
-        <div x-show="sidebarOpen" x-transition.opacity class="fixed inset-0 bg-black bg-opacity-50" @click="sidebarOpen = false"></div>
-        <div x-show="sidebarOpen" x-transition class="relative flex-1 flex flex-col max-w-xs w-full bg-gradient-to-b from-blue-600 to-blue-800 text-white">
-            <div class="p-6 text-xl font-bold flex items-center space-x-2">
-                <i class="fas fa-tachometer-alt"></i>
-                <a href="{{ route('admin.dashboard') }}">Admin Panel</a>
+    <aside id="mobile-sidebar"
+           class="fixed inset-y-0 left-0 bg-sidebar text-white w-64 z-30 transform -translate-x-full transition-transform duration-300 lg:hidden">
+        <div class="flex items-center justify-between h-16 border-b border-gray-700 px-6">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-code text-2xl text-blue-400"></i>
+                <span class="text-xl font-bold">ITFreelanceHub</span>
             </div>
-            <nav class="flex-1">
-                <ul class="space-y-1 mt-6">
-                    <li>
-                        <a href="{{ route('admin.dashboard') }}"
-                            class="flex items-center px-6 py-3 hover:bg-blue-700 {{ request()->routeIs('admin.dashboard') ? 'bg-blue-900' : '' }}">
-                            <i class="fas fa-home mr-2"></i> Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.services.index') }}"
-                            class="flex items-center px-6 py-3 hover:bg-blue-700 {{ request()->routeIs('admin.services.*') ? 'bg-blue-900' : '' }}">
-                            <i class="fas fa-briefcase mr-2"></i> Manajemen Katalog
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.bookings.index') }}"
-                            class="flex items-center px-6 py-3 hover:bg-blue-700 {{ request()->routeIs('admin.bookings.*') ? 'bg-blue-900' : '' }}">
-                            <i class="fas fa-shopping-cart mr-2"></i> Manajemen Pesanan
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <button id="close-sidebar" class="text-gray-300 hover:text-white">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-    </div>
+        <nav class="mt-5">
+            <ul class="space-y-2 px-2">
+                <li>
+                    <a href="{{ url('dashboard') }}"
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('dashboard') ? 'sidebar-active' : '' }}">
+                        <i class="fas fa-tachometer-alt w-6 mr-3"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('catalog') }}"
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('catalog*') ? 'sidebar-active' : '' }}">
+                        <i class="fas fa-briefcase w-6 mr-3"></i>
+                        <span>Service Catalog</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('orders') }}"
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('orders') ? 'sidebar-active' : '' }}">
+                        <i class="fas fa-shopping-cart w-6 mr-3"></i>
+                        <span>Order Management</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('company_profile_admin') }}"
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('company_profile_admin*') ? 'sidebar-active' : '' }}">
+                        <i class="fas fa-building w-6 mr-3"></i>
+                        <span>Company Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('sales_report') }}"
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('sales_report') ? 'sidebar-active' : '' }}">
+                        <i class="fas fa-chart-bar w-6 mr-3"></i>
+                        <span>Sales Report</span>
+                    </a>
+                </li>
+                <li class="border-t border-gray-700 pt-2 mt-2">
+                    <a href="../index.php" target="_blank"
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors">
+                        <i class="fas fa-external-link-alt w-6 mr-3"></i>
+                        <span>View Website</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
 
-    <!-- Main Content -->
-    <div class="flex flex-col md:pl-64 min-h-screen">
-
-        <!-- Navbar -->
-        <header class="sticky top-0 bg-white shadow z-10 flex items-center justify-between px-4 py-4 md:py-5 md:px-6">
-            <!-- Hamburger -->
-            <button @click="sidebarOpen = true" class="text-gray-600 md:hidden">
+    <!-- Content Area -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+        <!-- Header -->
+        <header class="flex items-center justify-between px-4 py-4 bg-white shadow-md">
+            <button id="mobile-menu-button" class="lg:hidden text-gray-700 focus:outline-none">
                 <i class="fas fa-bars text-xl"></i>
             </button>
-
-            <div class="flex items-center space-x-4 ml-auto">
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="text-red-600 hover:text-red-800 text-sm font-semibold">
-                        <i class="fas fa-sign-out-alt mr-1"></i> Logout
-                    </button>
-                </form>
-            </div>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="text-red-600 hover:text-red-800 text-sm font-semibold">
+                    <i class="fas fa-sign-out-alt mr-1"></i> Logout
+                </button>
+            </form>
         </header>
 
-        <!-- Page Content -->
-        <main class="flex-1 p-4 md:p-6">
+        <!-- Main -->
+        <main class="flex-1 overflow-y-auto p-6">
             @if(session('success'))
-                <div class="mb-4">
-                    <div class="bg-green-100 text-green-800 px-4 py-3 rounded" role="alert">
-                        <span class="block sm:inline">{{ session('success') }}</span>
-                    </div>
-                </div>
+                <div class="bg-green-100 text-green-800 px-4 py-3 rounded mb-4">{{ session('success') }}</div>
             @endif
-
             @if(session('error'))
-                <div class="mb-4">
-                    <div class="bg-red-100 text-red-800 px-4 py-3 rounded" role="alert">
-                        <span class="block sm:inline">{{ session('error') }}</span>
-                    </div>
-                </div>
+                <div class="bg-red-100 text-red-800 px-4 py-3 rounded mb-4">{{ session('error') }}</div>
             @endif
-
             @yield('content')
         </main>
     </div>
+
+    <script>
+        // Mobile sidebar toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileSidebar = document.getElementById('mobile-sidebar');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeSidebarButton = document.getElementById('close-sidebar');
+
+            function openSidebar() {
+                mobileSidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+            }
+
+            function closeSidebar() {
+                mobileSidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', openSidebar);
+            }
+            if (closeSidebarButton) {
+                closeSidebarButton.addEventListener('click', closeSidebar);
+            }
+            if (sidebarOverlay) {
+                sidebarOverlay.addEventListener('click', closeSidebar);
+            }
+        });
+    </script>
 </body>
 </html>
