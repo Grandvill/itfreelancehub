@@ -8,12 +8,12 @@
         <h2 class="text-2xl font-bold text-gray-800">Laporan Penjualan</h2>
         <form action="{{ route('admin.sales-report.index') }}" method="GET" class="flex items-center space-x-4">
             <div>
-                <label for="start_date" class="text-sm font-medium text-gray-700">From</label>
-                <input type="date" name="start_date" value="{{ $start_date }}" class="px-3 py-2 border rounded-md text-sm">
+                <label for="from" class="text-sm font-medium text-gray-700">From</label>
+                <input type="date" name="from" value="{{ $from }}" class="px-3 py-2 border rounded-md text-sm">
             </div>
             <div>
-                <label for="end_date" class="text-sm font-medium text-gray-700">To</label>
-                <input type="date" name="end_date" value="{{ $end_date }}" class="px-3 py-2 border rounded-md text-sm">
+                <label for="to" class="text-sm font-medium text-gray-700">To</label>
+                <input type="date" name="to" value="{{ $to }}" class="px-3 py-2 border rounded-md text-sm">
             </div>
             <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md mt-6">Filter</button>
         </form>
@@ -53,8 +53,8 @@
                         </td>
                         <td class="px-6 py-4 text-sm text-gray-900">Rp{{ number_format($booking->service->price ?? 0, 0, ',', '.') }}</td>
                         <td class="px-6 py-4 text-sm text-gray-900 text-center">1</td>
-                        <td class="px-6 py-4 text-sm font-medium text-gray-900">
-                            Rp{{ number_format($booking->status == 'Approved' ? ($booking->service->price ?? 0) : 0, 0, ',', '.') }}
+                        <td class="font-semibold">
+                            Rp{{ number_format($booking->service->price ?? 0, 0, ',', '.') }}
                         </td>
                         <td class="px-6 py-4 text-sm text-gray-900">
                             {{ $booking->created_at->format('d/m/Y') }}<br>
@@ -89,17 +89,20 @@
         </div>
 
         @if ($bookings->count())
-        <div class="bg-gray-50 px-6 py-4 border-t border-gray-200">
-            <div class="flex justify-between items-center">
-                <div class="text-sm text-gray-600">
-                    Total {{ $total_orders }} pesanan untuk periode {{ \Carbon\Carbon::parse($start_date)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($end_date)->format('d/m/Y') }}
-                </div>
-                <div class="text-lg font-semibold text-gray-900">
-                    Total Pendapatan: Rp{{ number_format($total_revenue, 0, ',', '.') }}
+            <div class="bg-gray-50 px-6 py-4 border-t border-gray-200">
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-600">
+                        Total {{ count($bookings) }} pesanan untuk periode {{ \Carbon\Carbon::parse($from)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($to)->format('d/m/Y') }}
+
+                    </div>
+
+                    <div class="text-lg font-semibold text-gray-900">
+                        Total Pendapatan: Rp{{ number_format($totalRevenue, 0, ',', '.') }}
+                    </div>
                 </div>
             </div>
-        </div>
         @endif
+
     </div>
 </div>
 @endsection
