@@ -57,11 +57,12 @@
                             <i class="fas fa-tachometer-alt"></i>
                             <span>Dashboard</span>
                         </a>
-                        <a href="{{ route('admin.catalog') }}" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
+                       <a href="{{ route('admin.services.index') }}" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
                             <i class="fas fa-box"></i>
                             <span>Manajemen Katalog</span>
                         </a>
-                        <a href="{{ route('admin.orders') }}" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
+
+                        <a href="{{ route('admin.orders.index') }}" class="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
                             <i class="fas fa-shopping-cart"></i>
                             <span>Manajemen Pesanan</span>
                         </a>
@@ -115,11 +116,12 @@
                             <i class="fas fa-tachometer-alt"></i>
                             <span>Dashboard</span>
                         </a>
-                        <a href="{{ route('admin.catalog') }}" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-50">
+                        <a href="{{ route('admin.services.index') }}" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-50">
                             <i class="fas fa-box"></i>
                             <span>Manajemen Katalog</span>
                         </a>
-                        <a href="{{ route('admin.orders') }}" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-50">
+
+                        <a href="{{ route('admin.orders.index') }}" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-gray-50">
                             <i class="fas fa-shopping-cart"></i>
                             <span>Manajemen Pesanan</span>
                         </a>

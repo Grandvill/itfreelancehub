@@ -25,6 +25,7 @@ class HomeController extends Controller
         return view('landing.booking', compact('services'));
     }
 
+
     public function companyProfile()
     {
         return view('landing.companyProfile');
@@ -50,7 +51,16 @@ class HomeController extends Controller
     public function dashboard()
     {
         $totalBookings = Booking::count();
+        $pendingBookings = Booking::where('status', 'Pending')->count();
         $totalServices = Service::count();
-        return view('admin.dashboard', compact('totalBookings', 'totalServices'));
+        $recentBookings = Booking::with('service')->latest()->take(5)->get();
+        $recentServices = Service::latest()->take(5)->get();
+        return view('admin.dashboard', compact('totalBookings', 'totalServices', 'pendingBookings', 'recentBookings', 'recentServices'));
+    }
+
+    public function bookings()
+    {
+        $bookings = Booking::with('service')->get();
+        return view('admin.bookings.index', compact('bookings'));
     }
 }
