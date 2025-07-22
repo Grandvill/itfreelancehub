@@ -40,34 +40,27 @@
             <ul class="space-y-2 px-2">
                 <li>
                     <a href="{{ route('admin.dashboard') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('admin.dashboard') ? 'sidebar-active' : '' }}">
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->routeIs('admin.dashboard') ? 'sidebar-active' : '' }}">
                         <i class="fas fa-tachometer-alt w-6 mr-3"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
                      <a href="{{ route('admin.services.index') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('admin.services.index') ? 'sidebar-active' : '' }}">
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->routeIs('admin.services.*') ? 'sidebar-active' : '' }}">
                         <i class="fas fa-briefcase w-6 mr-3"></i>
                         <span>Manajemen Katalog</span>
                     </a>
                 </li>
                 <li>
                      <a href="{{ route('admin.bookings.index') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('admin.bookings.index') ? 'sidebar-active' : '' }}">
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->routeIs('admin.bookings.*') ? 'sidebar-active' : '' }}">
                         <i class="fas fa-shopping-cart w-6 mr-3"></i>
                         <span>Manajemen Pesanan</span>
                     </a>
                 </li>
-                {{-- <li>
-                    <a href="{{ route('admin.reports.sales') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('admin.reports.sales') ? 'sidebar-active' : '' }}">
-                        <i class="fas fa-chart-bar w-6 mr-3"></i>
-                        <span>Laporan Penjualan</span>
-                    </a>
-                </li> --}}
                 <li class="border-t border-gray-700 pt-2 mt-2">
-                    <a href="../index.php" target="_blank"
+                    <a href="{{ url('/') }}" target="_blank"
                        class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors">
                         <i class="fas fa-external-link-alt w-6 mr-3"></i>
                         <span>View Website</span>
@@ -95,42 +88,28 @@
         <nav class="mt-5">
             <ul class="space-y-2 px-2">
                 <li>
-                    <a href="{{ url('dashboard') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('dashboard') ? 'sidebar-active' : '' }}">
+                    <a href="{{ route('admin.dashboard') }}"
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->routeIs('admin.dashboard') ? 'sidebar-active' : '' }}">
                         <i class="fas fa-tachometer-alt w-6 mr-3"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('catalog') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('catalog*') ? 'sidebar-active' : '' }}">
+                    <a href="{{ route('admin.services.index') }}"
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->routeIs('admin.services.*') ? 'sidebar-active' : '' }}">
                         <i class="fas fa-briefcase w-6 mr-3"></i>
-                        <span>Service Catalog</span>
+                        <span>Manajemen Katalog</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('orders') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('orders') ? 'sidebar-active' : '' }}">
+                    <a href="{{ route('admin.bookings.index') }}"
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->routeIs('admin.bookings.*') ? 'sidebar-active' : '' }}">
                         <i class="fas fa-shopping-cart w-6 mr-3"></i>
-                        <span>Order Management</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url('company_profile_admin') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('company_profile_admin*') ? 'sidebar-active' : '' }}">
-                        <i class="fas fa-building w-6 mr-3"></i>
-                        <span>Company Profile</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url('sales_report') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->is('sales_report') ? 'sidebar-active' : '' }}">
-                        <i class="fas fa-chart-bar w-6 mr-3"></i>
-                        <span>Sales Report</span>
+                        <span>Manajemen Pesanan</span>
                     </a>
                 </li>
                 <li class="border-t border-gray-700 pt-2 mt-2">
-                    <a href="../index.php" target="_blank"
+                    <a href="{{ url('/') }}" target="_blank"
                        class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors">
                         <i class="fas fa-external-link-alt w-6 mr-3"></i>
                         <span>View Website</span>
@@ -142,18 +121,8 @@
 
     <!-- Content Area -->
     <div class="flex-1 flex flex-col overflow-hidden">
-        <!-- Header -->
-        <header class="flex items-center justify-between px-4 py-4 bg-white shadow-md">
-            <button id="mobile-menu-button" class="lg:hidden text-gray-700 focus:outline-none">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="text-red-600 hover:text-red-800 text-sm font-semibold">
-                    <i class="fas fa-sign-out-alt mr-1"></i> Logout
-                </button>
-            </form>
-        </header>
+        <!-- Header Component -->
+        <x-admin.header :title="$pageTitle ?? null" />
 
         <!-- Main -->
         <main class="flex-1 overflow-y-auto p-6">
