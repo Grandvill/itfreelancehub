@@ -7,15 +7,20 @@
     <div class="flex justify-between items-center">
         <h2 class="text-2xl font-bold text-gray-800">Laporan Penjualan</h2>
         <form action="{{ route('admin.sales-report.index') }}" method="GET" class="flex items-center space-x-4">
-            <div>
-                <label for="from" class="text-sm font-medium text-gray-700">From</label>
-                <input type="date" name="from" value="{{ $from }}" class="px-3 py-2 border rounded-md text-sm">
-            </div>
-            <div>
-                <label for="to" class="text-sm font-medium text-gray-700">To</label>
-                <input type="date" name="to" value="{{ $to }}" class="px-3 py-2 border rounded-md text-sm">
-            </div>
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md mt-6">Filter</button>
+        <div class="flex items-end space-x-2">
+        <div>
+            <label for="from" class="text-sm font-medium text-gray-700 block">From</label>
+            <input type="date" name="from" value="{{ $from }}" class="px-3 py-2 border rounded-md text-sm">
+        </div>
+        <div>
+            <label for="to" class="text-sm font-medium text-gray-700 block">To</label>
+            <input type="date" name="to" value="{{ $to }}" class="px-3 py-2 border rounded-md text-sm">
+        </div>
+        <div class="pt-5">
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md">Filter</button>
+        </div>
+        </div>
+
         </form>
     </div>
 
