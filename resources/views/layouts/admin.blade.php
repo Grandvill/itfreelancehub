@@ -59,6 +59,13 @@
                         <span>Manajemen Pesanan</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.sales-report.index') }}"
+                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->routeIs('admin.sales-report.*') ? 'sidebar-active' : '' }}">
+                        <i class="fas fa-chart-line w-6 mr-3"></i>
+                        <span>Laporan Penjualan</span>
+                    </a>
+                </li>
                 <li class="border-t border-gray-700 pt-2 mt-2">
                     <a href="{{ url('/') }}" target="_blank"
                        class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors">

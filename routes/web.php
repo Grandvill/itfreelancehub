@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\TrackOrderController;
+use App\Http\Controllers\SalesReportController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -23,5 +24,6 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('/bookings', BookingController::class)->names('admin.bookings');
     Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('admin.bookings.show');
     Route::post('/bookings/{booking}/status', [BookingController::class, 'updateStatus'])->name('admin.bookings.updateStatus');
+    Route::get('/sales-report', [SalesReportController::class, 'index'])->name('admin.sales-report.index');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

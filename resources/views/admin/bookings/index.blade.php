@@ -33,18 +33,20 @@
         <table class="min-w-full divide-y divide-gray-200 text-sm">
             <thead class="bg-gray-50">
                 <tr>
-                    <th class="px-6 py-3 text-left font-medium">ID</th>
-                    <th class="px-6 py-3 text-left font-medium">Customer</th>
-                    <th class="px-6 py-3 text-left font-medium">Service</th>
-                    <th class="px-6 py-3 text-left font-medium">Status</th>
-                    <th class="px-6 py-3 text-left font-medium">Created</th>
-                    <th class="px-6 py-3 text-left font-medium">Actions</th>
+                    <th class="px-6 py-3 text-left font-medium">NO.</th>
+                    <th class="px-6 py-3 text-left font-medium">CUSTOMER</th>
+                    <th class="px-6 py-3 text-left font-medium">SERVICE</th>
+                    <th class="px-6 py-3 text-left font-medium">STATUS</th>
+                    <th class="px-6 py-3 text-left font-medium">CREATED</th>
+                    <th class="px-6 py-3 text-left font-medium">ACTIONS</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-100">
-                @forelse($bookings as $booking)
+                @forelse($bookings as $index => $booking)
                 <tr>
-                    <td class="px-6 py-4">#{{ $booking->id }}</td>
+                     <td class="px-4 py-3 text-sm text-gray-600 whitespace-nowrap">
+                        {{ ($bookings->currentPage() - 1) * $bookings->perPage() + $index + 1 }}
+                    </td>
                     <td class="px-6 py-4">{{ $booking->name }}<br><small>{{ $booking->email }}</small></td>
                     <td class="px-6 py-4">{{ $booking->service->title ?? '-' }}</td>
                     <td class="px-6 py-4">
