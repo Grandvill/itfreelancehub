@@ -59,7 +59,9 @@
                     </td>
                     <td class="px-6 py-4">{{ $booking->created_at->format('d M Y') }}</td>
                     <td class="px-6 py-4 space-x-2">
-                        <a href="{{ route('admin.bookings.show', $booking->id) }}" class="text-blue-600 hover:underline">View</a>
+                        <a href="{{ route('admin.bookings.show', $booking->id) }}" class="font-medium text-blue-600 hover:text-blue-900 mr-3">
+                                <i class="fas fa-eye"></i> View
+                        </a>
                         <form action="{{ route('admin.bookings.updateStatus', $booking) }}" method="POST" class="inline">
                             @csrf
                             <select name="status" onchange="this.form.submit()" class="text-xs border rounded px-2 py-1">
