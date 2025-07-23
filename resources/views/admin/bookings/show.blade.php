@@ -56,18 +56,18 @@
             <div class="mt-6">
                 <h4 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Ubah Status</h4>
                 <form action="{{ route('admin.bookings.updateStatus', $booking->id) }}" method="POST" class="flex items-center space-x-4">
-                    @csrf
-                    @method('PATCH')
-                    <select name="status" class="px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
-                        <option value="Request" {{ $booking->status == 'Request' ? 'selected' : '' }}>Request</option>
-                        <option value="Approved" {{ $booking->status == 'Approved' ? 'selected' : '' }}>Approved</option>
-                        <option value="Rejected" {{ $booking->status == 'Rejected' ? 'selected' : '' }}>Rejected</option>
-                    </select>
+                @csrf
+                <select name="status" class="px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    <option value="pending" {{ $booking->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                    <option value="accepted" {{ $booking->status == 'accepted' ? 'selected' : '' }}>Accepted</option>
+                    <option value="rejected" {{ $booking->status == 'rejected' ? 'selected' : '' }}>Rejected</option>
+                </select>
 
-                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
-                        Update Status
-                    </button>
-                </form>
+                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
+                    Update Status
+                </button>
+            </form>
+
             </div>
         </div>
     </div>
