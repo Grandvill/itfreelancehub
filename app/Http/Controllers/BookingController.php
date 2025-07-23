@@ -62,24 +62,32 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'service_id' => 'required|string|max:255',
+            'phone' => 'nullable|string|max:50',
+            'company' => 'nullable|string|max:255',
+            'service_id' => 'required|exists:services,id',
+            'service_price' => 'nullable|numeric',
+            'timeline' => 'nullable|string|max:255',
             'message' => 'required|string',
         ]);
 
         Booking::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'company' => $request->company,
             'service_id' => $request->service_id,
             'description' => $request->message,
+            'service_price' => $request->service_price,
+            'timeline' => $request->timeline,
             'status' => 'pending',
         ]);
 
         return redirect()->back()->with('success', 'Booking submitted successfully!');
     }
+
 
     public function update(Request $request, Booking $booking)
     {
