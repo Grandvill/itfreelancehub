@@ -98,4 +98,10 @@ class BookingController extends Controller
         $booking->update(['status' => $request->status]);
         return redirect()->route('admin.bookings.index')->with('success', 'Booking status updated!');
     }
+
+    public function destroy(Booking $booking)
+    {
+        $booking->delete();
+        return redirect()->route('admin.bookings.index')->with('success', 'Booking deleted successfully!');
+    }
 }

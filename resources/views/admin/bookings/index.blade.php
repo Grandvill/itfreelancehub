@@ -58,19 +58,32 @@
                         </span>
                     </td>
                     <td class="px-6 py-4">{{ $booking->created_at->format('d M Y') }}</td>
-                    <td class="px-6 py-4 space-x-2">
-                        <a href="{{ route('admin.bookings.show', $booking->id) }}" class="font-medium text-blue-600 hover:text-blue-900 mr-3">
+                    <td class="px-6 py-4">
+                        <div class="flex items-center space-x-3">
+                            <a href="{{ route('admin.bookings.show', $booking->id) }}" class="font-medium text-blue-600 hover:text-blue-900">
                                 <i class="fas fa-eye"></i> View
-                        </a>
-                        <form action="{{ route('admin.bookings.updateStatus', $booking) }}" method="POST" class="inline">
-                            @csrf
-                            <select name="status" onchange="this.form.submit()" class="text-xs border rounded px-2 py-1">
-                                <option value="pending" {{ $booking->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                                <option value="accepted" {{ $booking->status == 'accepted' ? 'selected' : '' }}>Accepted</option>
-                                <option value="rejected" {{ $booking->status == 'rejected' ? 'selected' : '' }}>Rejected</option>
-                            </select>
-                        </form>
+                            </a>
+
+                            <form action="{{ route('admin.bookings.updateStatus', $booking) }}" method="POST">
+                                @csrf
+                                <select name="status" onchange="this.form.submit()" class="text-xs border rounded px-2 py-1">
+                                    <option value="pending" {{ $booking->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                                    <option value="accepted" {{ $booking->status == 'accepted' ? 'selected' : '' }}>Accepted</option>
+                                    <option value="rejected" {{ $booking->status == 'rejected' ? 'selected' : '' }}>Rejected</option>
+                                </select>
+                            </form>
+
+                            <form action="{{ route('admin.bookings.destroy', $booking) }}" method="POST"
+                                onsubmit="return confirm('Yakin ingin menghapus Pesanan ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-600 hover:text-red-800">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        </div>
                     </td>
+
                 </tr>
                 @empty
                 <tr>
