@@ -32,13 +32,14 @@
                         <div>
                             <span class="text-gray-600 font-medium">Status:</span>
                             <span class="ml-2 px-2 py-1 inline-flex text-xs font-semibold rounded-full
-                                @if($booking->status === 'Request') bg-yellow-100 text-yellow-800
-                                @elseif($booking->status === 'Approved') bg-green-100 text-green-800
-                                @elseif($booking->status === 'Rejected') bg-red-100 text-red-800
-                                @endif">
-                                {{ $booking->status }}
+                                @if(strtolower($booking->status) == 'pending') bg-yellow-500 text-yellow-100
+                                @elseif(strtolower($booking->status) == 'accepted') bg-green-500 text-green-100
+                                @else bg-red-700 text-red-100 @endif">
+                                {{ ucfirst($booking->status) }}
                             </span>
                         </div>
+
+
                     </div>
                 </div>
             </div>

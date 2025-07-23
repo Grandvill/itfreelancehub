@@ -68,9 +68,9 @@
                         <td class="px-6 py-4">
                             @php
                                 $statusColor = match($booking->status) {
-                                    'Approved' => 'bg-green-100 text-green-800',
-                                    'Rejected' => 'bg-red-100 text-red-800',
-                                    default => 'bg-yellow-100 text-yellow-800',
+                                    'accepted' => 'bg-green-500 text-green-100',
+                                    'rejected' => 'bg-red-700 text-red-100',
+                                    default => 'bg-yellow-500 text-yellow-100',
                                 };
                             @endphp
                             <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full {{ $statusColor }}">

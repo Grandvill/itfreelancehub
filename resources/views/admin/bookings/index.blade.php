@@ -51,9 +51,9 @@
                     <td class="px-6 py-4">{{ $booking->service->title ?? '-' }}</td>
                     <td class="px-6 py-4">
                         <span class="px-2 py-1 rounded-full text-xs font-semibold
-                            @if($booking->status == 'pending') bg-yellow-100 text-yellow-800
-                            @elseif($booking->status == 'accepted') bg-green-100 text-green-800
-                            @else bg-red-100 text-red-800 @endif">
+                            @if($booking->status == 'pending') bg-yellow-500 text-yellow-100
+                            @elseif($booking->status == 'accepted') bg-green-500 text-green-100
+                            @else bg-red-700 text-red-100 @endif">
                             {{ ucfirst($booking->status) }}
                         </span>
                     </td>
