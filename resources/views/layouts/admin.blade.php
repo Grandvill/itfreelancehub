@@ -18,17 +18,13 @@
             }
         }
     </script>
+
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        .sidebar-active {
-            @apply bg-blue-600 text-white;
-        }
-    </style>
 </head>
 <body class="flex h-screen bg-gray-100 text-gray-900 overflow-hidden">
 
-    <!-- Desktop Sidebar -->
+    <!-- Sidebar desktop -->
     <aside class="bg-sidebar text-white w-64 flex-shrink-0 hidden lg:block">
         <div class="flex items-center justify-center h-16 border-b border-gray-700">
             <div class="flex items-center space-x-2">
@@ -40,36 +36,40 @@
             <ul class="space-y-2 px-2">
                 <li>
                     <a href="{{ route('admin.dashboard') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->routeIs('admin.dashboard') ? 'sidebar-active' : '' }}">
-                        <i class="fas fa-tachometer-alt w-6 mr-3"></i>
+                       class="flex items-center px-4 py-3 rounded-lg transition-colors
+                       {{ request()->routeIs('admin.dashboard') ? 'bg-gray-700 text-white border-l-4 border-blue-500' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} flex items-center px-4 py-2 rounded-md }}">
+                        <i class="fas fa-globe w-5 mr-3"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
-                     <a href="{{ route('admin.services.index') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->routeIs('admin.services.*') ? 'sidebar-active' : '' }}">
-                        <i class="fas fa-briefcase w-6 mr-3"></i>
+                    <a href="{{ route('admin.services.index') }}"
+                       class="flex items-center px-4 py-3 rounded-lg transition-colors
+                       {{ request()->routeIs('admin.services.*') ? 'bg-gray-700 text-white border-l-4 border-blue-500' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} flex items-center px-4 py-2 rounded-md }}">
+                        <i class="fas fa-briefcase w-5 mr-3"></i>
                         <span>Manajemen Katalog</span>
                     </a>
                 </li>
                 <li>
-                     <a href="{{ route('admin.bookings.index') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->routeIs('admin.bookings.*') ? 'sidebar-active' : '' }}">
-                        <i class="fas fa-shopping-cart w-6 mr-3"></i>
+                    <a href="{{ route('admin.bookings.index') }}"
+                       class="flex items-center px-4 py-3 rounded-lg transition-colors
+                       {{ request()->routeIs('admin.bookings.*') ? 'bg-gray-700 text-white border-l-4 border-blue-500' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} flex items-center px-4 py-2 rounded-md }}">
+                        <i class="fas fa-shopping-cart w-5 mr-3"></i>
                         <span>Manajemen Pesanan</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.sales-report.index') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->routeIs('admin.sales-report.*') ? 'sidebar-active' : '' }}">
-                        <i class="fas fa-chart-line w-6 mr-3"></i>
+                       class="flex items-center px-4 py-3 rounded-lg transition-colors
+                       {{ request()->routeIs('admin.sales-report.*') ? 'bg-gray-700 text-white border-l-4 border-blue-500' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} flex items-center px-4 py-2 rounded-md }}">
+                        <i class="fas fa-chart-line w-5 mr-3"></i>
                         <span>Laporan Penjualan</span>
                     </a>
                 </li>
                 <li class="border-t border-gray-700 pt-2 mt-2">
                     <a href="{{ url('/') }}" target="_blank"
                        class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors">
-                        <i class="fas fa-external-link-alt w-6 mr-3"></i>
+                        <i class="fas fa-external-link-alt w-5 mr-3"></i>
                         <span>View Website</span>
                     </a>
                 </li>
@@ -96,29 +96,40 @@
             <ul class="space-y-2 px-2">
                 <li>
                     <a href="{{ route('admin.dashboard') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->routeIs('admin.dashboard') ? 'sidebar-active' : '' }}">
-                        <i class="fas fa-tachometer-alt w-6 mr-3"></i>
+                       class="flex items-center px-4 py-3 rounded-lg transition-colors
+                       {{ request()->routeIs('admin.dashboard') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
+                        <i class="fas fa-tachometer-alt w-5 mr-3"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.services.index') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->routeIs('admin.services.*') ? 'sidebar-active' : '' }}">
-                        <i class="fas fa-briefcase w-6 mr-3"></i>
+                       class="flex items-center px-4 py-3 rounded-lg transition-colors
+                       {{ request()->routeIs('admin.services.*') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
+                        <i class="fas fa-briefcase w-5 mr-3"></i>
                         <span>Manajemen Katalog</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.bookings.index') }}"
-                       class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors {{ request()->routeIs('admin.bookings.*') ? 'sidebar-active' : '' }}">
-                        <i class="fas fa-shopping-cart w-6 mr-3"></i>
+                       class="flex items-center px-4 py-3 rounded-lg transition-colors
+                       {{ request()->routeIs('admin.bookings.*') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
+                        <i class="fas fa-shopping-cart w-5 mr-3"></i>
                         <span>Manajemen Pesanan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.sales-report.index') }}"
+                       class="flex items-center px-4 py-3 rounded-lg transition-colors
+                       {{ request()->routeIs('admin.sales-report.*') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
+                        <i class="fas fa-chart-line w-5 mr-3"></i>
+                        <span>Laporan Penjualan</span>
                     </a>
                 </li>
                 <li class="border-t border-gray-700 pt-2 mt-2">
                     <a href="{{ url('/') }}" target="_blank"
                        class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors">
-                        <i class="fas fa-external-link-alt w-6 mr-3"></i>
+                        <i class="fas fa-external-link-alt w-5 mr-3"></i>
                         <span>View Website</span>
                     </a>
                 </li>
@@ -126,9 +137,9 @@
         </nav>
     </aside>
 
-    <!-- Content Area -->
+    <!-- Konten Utama -->
     <div class="flex-1 flex flex-col overflow-hidden">
-        <!-- Header Component -->
+        <!-- Header -->
         <x-admin.header :title="$pageTitle ?? null" />
 
         <!-- Main -->
@@ -145,7 +156,7 @@
 
     <script>
         // Mobile sidebar toggle
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const mobileSidebar = document.getElementById('mobile-sidebar');
             const sidebarOverlay = document.getElementById('sidebar-overlay');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
