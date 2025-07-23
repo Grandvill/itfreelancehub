@@ -68,21 +68,17 @@
                         <td class="px-6 py-4 text-sm text-gray-500">
                             {{ $service->created_at->format('d M Y') }}
                         </td>
-                        <td class="px-6 py-4 text-sm font-medium space-x-2">
-                            <a href="{{ route('admin.services.show', $service) }}"
-                                class="text-blue-600 hover:text-blue-900">
-                                <i class="fas fa-eye"></i>
-                            </a>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <a href="{{ route('admin.services.edit', $service) }}"
-                                class="text-yellow-500 hover:text-yellow-700">
-                                <i class="fas fa-edit"></i>
+                                class="text-blue-600 hover:text-blue-900 mr-3">
+                                <i class="fas fa-edit"></i> Edit
                             </a>
                             <form action="{{ route('admin.services.destroy', $service) }}" method="POST"
                                 class="inline" onsubmit="return confirm('Yakin ingin menghapus jasa ini?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-red-600 hover:text-red-800">
-                                    <i class="fas fa-trash-alt"></i>
+                                    <i class="fas fa-trash-alt"></i> Delete
                                 </button>
                             </form>
                         </td>
