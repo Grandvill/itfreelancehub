@@ -27,7 +27,6 @@
                     <div class="space-y-3">
                         <div><span class="text-gray-600 font-medium">Layanan:</span> <span class="text-gray-900 ml-2">{{ $booking->service->title ?? '-' }}</span></div>
                         <div><span class="text-gray-600 font-medium">Harga:</span> <span class="text-gray-900 ml-2">Rp{{ number_format($booking->service->price ?? 0, 0, ',', '.') }}</span></div>
-                        <div><span class="text-gray-600 font-medium">Budget:</span> <span class="text-gray-900 ml-2">{{ $booking->budget ?? 'N/A' }}</span></div>
                         <div><span class="text-gray-600 font-medium">Timeline:</span> <span class="text-gray-900 ml-2">{{ $booking->timeline ?? 'N/A' }}</span></div>
                         <div><span class="text-gray-600 font-medium">Tanggal:</span> <span class="text-gray-900 ml-2">{{ $booking->created_at->translatedFormat('d F Y, H:i') }}</span></div>
                         <div>
@@ -44,11 +43,11 @@
                 </div>
             </div>
 
-            @if ($booking->message)
+            @if ($booking->description)
             <div class="mt-6">
                 <h4 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Detail Proyek</h4>
                 <div class="bg-gray-50 p-4 rounded-md">
-                    <p class="text-gray-800 whitespace-pre-line">{{ $booking->message }}</p>
+                    <p class="text-gray-800 whitespace-pre-line">{{ $booking->description }}</p>
                 </div>
             </div>
             @endif
