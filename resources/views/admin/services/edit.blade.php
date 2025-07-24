@@ -3,7 +3,8 @@
 @section('title', 'Edit Jasa')
 
 @section('content')
-<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+<div class="w-full px-4 sm:px-6 lg:px-8 py-6 space-y-6">
     <div class="flex justify-between items-center">
         <h2 class="text-2xl font-bold text-gray-800">Edit Jasa</h2>
         <a href="{{ route('admin.services.index') }}" class="text-blue-600 hover:text-blue-800">
@@ -54,7 +55,7 @@
             <div class="mt-2 flex items-center gap-4">
                 <div id="image-preview" class="{{ $service->image ? '' : 'hidden' }} w-32 h-32 bg-gray-100 rounded-md overflow-hidden border">
                     @if($service->image)
-                        <img id="preview-img" src="{{ asset('storage/' . $service->image) }}" alt="Current Image" class="w-full h-full object-cover">
+                        <img id="preview-img" src="{{ asset('storage/services/' . $service->image) }}" alt="Current Image" class="w-full h-full object-cover">
                     @else
                         <img id="preview-img" src="#" alt="Preview" class="w-full h-full object-cover">
                     @endif
