@@ -38,9 +38,10 @@
                     <th class="px-6 py-3 text-left font-medium">SERVICE</th>
                     <th class="px-6 py-3 text-left font-medium">STATUS</th>
                     <th class="px-6 py-3 text-left font-medium">CREATED</th>
-                    <th class="px-6 py-3 text-left font-medium">ACTIONS</th>
+                    <th class="pl-20 pr-6 py-3 text-left font-medium">ACTIONS</th>
                 </tr>
             </thead>
+
             <tbody class="bg-white divide-y divide-gray-100">
                 @forelse($bookings as $index => $booking)
                 <tr>
@@ -78,7 +79,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-red-600 hover:text-red-800">
-                                    <i class="fas fa-trash-alt"></i>
+                                    <i class="fas fa-trash-alt"></i> Delete
                                 </button>
                             </form>
                         </div>
