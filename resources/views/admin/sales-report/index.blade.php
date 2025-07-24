@@ -45,13 +45,14 @@
                         <td class="px-6 py-4 text-sm text-gray-900">{{ $index + 1 }}</td>
                         <td class="px-6 py-4">
                             @if ($booking->service->image)
-                                <img src="{{ asset('storage/' . $booking->service->image) }}" class="h-16 w-16 object-cover rounded-lg">
+                                <img src="{{ asset('storage/services/' . $booking->service->image) }}" class="h-16 w-16 object-cover rounded-lg">
                             @else
                                 <div class="h-16 w-16 bg-gray-200 flex items-center justify-center rounded-lg">
                                     <i class="fas fa-image text-gray-400"></i>
                                 </div>
                             @endif
                         </td>
+
                         <td class="px-6 py-4">
                             <div class="text-sm font-medium text-gray-900">{{ $booking->service->title }}</div>
                             <div class="text-sm text-gray-500">{{ $booking->name }}</div>
