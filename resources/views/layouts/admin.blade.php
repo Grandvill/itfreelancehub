@@ -140,7 +140,8 @@
     <!-- Konten Utama -->
     <div class="flex-1 flex flex-col overflow-hidden">
         <!-- Header -->
-        <x-admin.header :title="$pageTitle ?? null" />
+        <x-admin.header :title="View::hasSection('title') ? View::getSection('title') : 'Admin Panel'" />
+
 
         <!-- Main -->
         <main class="flex-1 overflow-y-auto p-6">

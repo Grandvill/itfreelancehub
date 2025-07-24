@@ -1,11 +1,11 @@
 @extends('layouts.admin')
-@section('title', 'Manage Bookings')
+@section('title', 'Manajemen Pesanan')
 
 @section('content')
 
   <!-- Filter & Search (aligned to the right) -->
 <div class="flex justify-between items-center space-y-6 mb-6">
-    <h2 class="text-2xl font-bold text-gray-800">Order Management</h2>
+    <h2 class="text-2xl font-bold text-gray-800">Manajemen Pesanan</h2>
 
     <form method="GET" class="flex flex-wrap items-center space-x-3 ml-auto">
         <select name="status" onchange="this.form.submit()"
